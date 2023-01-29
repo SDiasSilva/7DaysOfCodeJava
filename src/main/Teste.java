@@ -15,7 +15,7 @@ public class Teste {
 		//#7DayOfCode - Dia 1 -  Fazer uma chamada na API do IMDB e recuperar o conteúdo
 		HttpClient client = HttpClient.newHttpClient();
 		HttpRequest request = HttpRequest.newBuilder()
-				.uri(new URI("https://imdb-api.com/en/API/Top250Movies/k_j16tufv9")).GET().build();
+				.uri(new URI("url ocultada")).GET().build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		String body = response.body().replace("{\"items\":[", "").replace("],\"errorMessage\":\"\"}", "")
 				.replace("{", "\n").replace("},", ",").replace("}", "");
