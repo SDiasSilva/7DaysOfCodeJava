@@ -1,10 +1,10 @@
 package model;
 
 public class Movie {
-	private String title;
+	private final String title;
 	private String urlImage;
 	private String rating;
-	private String year;
+	private final String year;
 
 	public Movie(String title, String urlImage, String rating, String year) {
 		this.title = title;
@@ -27,6 +27,10 @@ public class Movie {
 
 	public String getYear() {
 		return this.year;
+	}
+	
+	public void setUrlImage(String urlImage) {
+		this.urlImage = urlImage;
 	}
 	
 	public void setRating(String rating) {
