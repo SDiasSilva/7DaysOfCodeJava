@@ -8,3 +8,6 @@ possibilidade de que a média dessa nota mude com o tempo, além disso existe a 
 - Até o momento, não vejo necessidade da classe Movie ser interfaceada já que não existem métodos que obrigatoriamente precisem ser implementados ou classes que
 precisam implamentar a classe Movie em si;
 - Sobre a Classe ser imutável, a resposta é não, já que apesar de que os atributos title e year serem final, os atributos rating e urlImage podem mudar.
+
+Dia 4
+- Foi adicionado a classe HttpGenerator e gerado um arquivo index.html;
