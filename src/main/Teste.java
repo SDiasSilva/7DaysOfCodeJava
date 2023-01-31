@@ -1,4 +1,6 @@
 package main;
+import java.io.File;
+import java.io.PrintWriter;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import control.HttpGenerator;
 import model.Movie;
 
 public class Teste {
@@ -15,7 +18,7 @@ public class Teste {
 		//#7DayOfCode - Dia 1 -  Fazer uma chamada na API do IMDB e recuperar o conteúdo
 		HttpClient client = HttpClient.newHttpClient();
 		HttpRequest request = HttpRequest.newBuilder()
-				.uri(new URI("url ocultada")).GET().build();
+				.uri(new URI("https://imdb-api.com/en/API/Top250Movies/k_j16tufv9")).GET().build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		String body = response.body().replace("{\"items\":[", "").replace("],\"errorMessage\":\"\"}", "")
 				.replace("{", "\n").replace("},", ",").replace("}", "");
@@ -49,6 +52,11 @@ public class Teste {
 			movies.add(new Movie(titles.get(index), urlImages.get(index), ratings.get(index), years.get(index)));
 		}
 		movies.forEach(System.out::println);
+		
+		//#7DayOfCode - Dia 4 - Gerar um site com lista de filmes
+		movies.forEach(movie -> movie.setUrlImage(movie.getUrlImage().replace("https", "https:")));
+		HttpGenerator generator = new HttpGenerator(new PrintWriter(new File("index.html")));
+		generator.generate(movies);
 	}
 
 	public static List<String> parseAtribute(List<String> originalList, String keyword) {
