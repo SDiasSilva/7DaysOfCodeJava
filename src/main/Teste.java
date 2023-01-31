@@ -9,6 +9,7 @@ import java.net.http.HttpResponse.BodyHandlers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 import control.HttpGenerator;
 import model.Movie;
@@ -16,9 +17,13 @@ import model.Movie;
 public class Teste {
 	public static void main(String[] args) throws Exception {
 		//#7DayOfCode - Dia 1 -  Fazer uma chamada na API do IMDB e recuperar o conteúdo
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("API Key: ");
+		String apiKey = scanner.nextLine();
+		
 		HttpClient client = HttpClient.newHttpClient();
 		HttpRequest request = HttpRequest.newBuilder()
-				.uri(new URI("https://imdb-api.com/en/API/Top250Movies/k_j16tufv9")).GET().build();
+				.uri(new URI(apiKey)).GET().build();
 		HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
 		String body = response.body().replace("{\"items\":[", "").replace("],\"errorMessage\":\"\"}", "")
 				.replace("{", "\n").replace("},", ",").replace("}", "");
