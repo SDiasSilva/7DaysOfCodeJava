@@ -16,7 +16,7 @@ public class Movie {
 	public String getTitle() {
 		return this.title;
 	}
-	
+
 	public String getUrlImage() {
 		return this.urlImage;
 	}
@@ -28,17 +28,18 @@ public class Movie {
 	public String getYear() {
 		return this.year;
 	}
-	
+
 	public void setUrlImage(String urlImage) {
 		this.urlImage = urlImage;
 	}
-	
+
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
 
 	@Override
 	public String toString() {
-		return "\nTítulo: "+getTitle()+"\nAno: "+getYear()+"\nNota: "+getRating()+"\nUrl da Imagem: "+getUrlImage();
+		return "\nTítulo: " + getTitle() + "\nAno: " + getYear() + "\nNota: " + getRating() + "\nUrl da Imagem: "
+				+ getUrlImage();
 	}
 }

@@ -31,19 +31,24 @@ public class HttpGenerator {
 		this.writer = writer;
 	}
 
-	public void generate(List<Movie> movies) throws IOException {
-		writer.write("<!DOCTYPE html>\n");
-		writer.write("<html>\n");
-		writer.write(head);
-		writer.write("<body>\n");
-		for (Movie movie : movies) {
-			String movieBlock = String.format(divTemplate, movie.getTitle(), movie.getUrlImage(), movie.getTitle(), movie.getRating(), movie.getYear());
-			writer.write(movieBlock);
+	public void generate(List<Movie> movies) {
+		try {
+			writer.write("<!DOCTYPE html>\n");
+			writer.write("<html>\n");
+			writer.write(head);
+			writer.write("<body>\n");
+			for (Movie movie : movies) {
+				String movieBlock = String.format(divTemplate, movie.getTitle(), movie.getUrlImage(), movie.getTitle(),
+						movie.getRating(), movie.getYear());
+				writer.write(movieBlock);
+
+			}
+			writer.write("</body>\n");
+			writer.write("</html>\n");
+			writer.flush();
+			writer.close();
+		} catch (IOException e) {
 
 		}
-		writer.write("</body>\n");
-		writer.write("</html>\n");
-		writer.flush();
-		writer.close();
 	}
 }
