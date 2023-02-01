@@ -11,3 +11,6 @@ precisam implamentar a classe Movie em si;
 
 Dia 4
 - Foi adicionado a classe HttpGenerator e gerado um arquivo index.html;
+
+Dia 5
+- Foram adicionadas as classes ImdbApiClient e ImdbMovieJsonParser para encapsular, respectivamente, a chamada da API e o Parseamento do Json na Classe Main;
