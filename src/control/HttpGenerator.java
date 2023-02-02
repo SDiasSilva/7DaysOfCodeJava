@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.List;
-import model.Movie;
+import model.Content;
 
 public class HttpGenerator {
 
@@ -31,15 +31,15 @@ public class HttpGenerator {
 		this.writer = writer;
 	}
 
-	public void generate(List<Movie> movies) {
+	public void generate(List<? extends Content> contents) {
 		try {
 			writer.write("<!DOCTYPE html>\n");
 			writer.write("<html>\n");
 			writer.write(head);
 			writer.write("<body>\n");
-			for (Movie movie : movies) {
-				String movieBlock = String.format(divTemplate, movie.getTitle(), movie.getUrlImage(), movie.getTitle(),
-						movie.getRating(), movie.getYear());
+			for (Content content : contents) {
+				String movieBlock = String.format(divTemplate, content.title(), content.urlImage(), content.title(),
+						content.rating(), content.year());
 				writer.write(movieBlock);
 
 			}

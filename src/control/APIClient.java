@@ -8,25 +8,20 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 
-public class ImdbApiClient {
-	private HttpClient client;
-	private HttpRequest request;
-	private HttpResponse<String> response;
-	private String apiKey;
-	
-	public ImdbApiClient(String apiKey){
-		this.apiKey = apiKey;
-	}
-	
-	public String getBody(){
-		client = HttpClient.newHttpClient();
+public interface APIClient {
+	public String getBody();
+
+	default HttpResponse<String> makeAPIRequest(String apiURL) {
+		HttpClient client = HttpClient.newHttpClient();
+		HttpRequest request = null;
+		HttpResponse<String> response = null;
 		try {
-			request = HttpRequest.newBuilder()
-					.uri(new URI(apiKey)).GET().build();
+			request = HttpRequest.newBuilder().uri(new URI(apiURL)).GET().build();
 			response = client.send(request, BodyHandlers.ofString());
 		} catch (IOException | InterruptedException | URISyntaxException e) {
 			e.printStackTrace();
 		}
-		return response.body();
+		return response;
 	}
+//	public Type type();
 }
