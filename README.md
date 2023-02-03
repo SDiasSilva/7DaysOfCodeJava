@@ -16,3 +16,12 @@ Dia 5
 
 Dia 6
 - Foram criadas as interfaces APIClient, JsonParser e Content e alteradas, respectivamente, as classes ImdbAPIClient, ImdbMovieJsonParser e Movie além das adições das classes MarvelAPIClient, MarvelComicJsonParser e MarvelComic que implementam as 3 interfaces supracitadas, refatoração de diversas classes para comportar o uso da biblioteca GSON.
+
+Dia 7
+- Adicionadas as classes MarvelSeriesJsonParser e MarvelSeries para acomodar a lista de séries da API.
+- Nova classe abstrata AbstractMarvel criada para reutilizar atributos e implementações de métodos em MarvelComic e MarvelSeries.
+- Refatoração da classe MarvelAPIClient para fazer outras chamadas utilizando as mesmas chaves, com adição do atributo "link".
+- Refatoração de todas as classes que implementam Content, com adição do novo método "type()".
+- Refatoração da classe HttpGenerator para acomodar a nova descrição do card que mostra o tipo de conteúdo.
+- Exclusão das classes de teste main e criação de uma nova chamada Main para testar todas as classes.
+- Gerada uma página HTML que contém uma lista mista de ImdbMovie, MarvelComic e MarvelSeries, ordenada pelo título de forma reversa, já que é o único atributo das três classes que nunca está vazio.
