@@ -1,17 +1,10 @@
 package model;
 
-public class ImdbMovie implements Content{
-	private final String title;
+public class ImdbMovie implements Content, Comparable<Content> {
+	private String title;
 	private String image;
 	private String imDbRating;
-	private final String year;
-
-	public ImdbMovie(String title, String image, String imDbRating, String year) {
-		this.title = title;
-		this.image = image;
-		this.imDbRating = imDbRating;
-		this.year = year;
-	}
+	private String year;
 
 	@Override
 	public String title() {
@@ -35,7 +28,18 @@ public class ImdbMovie implements Content{
 
 	@Override
 	public String toString() {
-		return "\nTítulo: " + title() + "\nAno: " + year() + "\nNota: " + rating() + "\nUrl da Imagem: "
-				+ urlImage();
+		return "\nTítulo: " + title() + "\nAno: " + year() + "\nNota: " + rating() + "\nUrl da Imagem: " + urlImage();
 	}
+
+	@Override
+	public String type() {
+		return "Movie";
+	}
+
+	@Override
+	public int compareTo(Content outro) {
+		return this.title().compareTo(outro.title());
+	}
+	
+
 }

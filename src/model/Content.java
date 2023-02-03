@@ -5,4 +5,5 @@ public interface Content {
 	public String urlImage();
 	public String rating();
 	public String year();
+	public String type();
 }

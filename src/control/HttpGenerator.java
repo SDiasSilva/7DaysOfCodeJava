@@ -21,7 +21,10 @@ public class HttpGenerator {
 			<div class=\"card text-white bg-dark mb-3\" style=\"max-width: 18rem;\">
 				<h4 class=\"card-header\">%s</h4>
 				<div class=\"card-body\">
-					<img class=\"card-img\" src=\"%s\" alt=\"%s poster\">
+					<figure>
+						<img class=\"card-img\" src=\"%s\" alt=\"%s poster\">
+						<figcaption>%s</figcaption>
+					</figure>
 					<p class=\"card-text mt-2\">Nota: %s - Ano: %s</p>
 				</div>
 			</div>
@@ -38,7 +41,7 @@ public class HttpGenerator {
 			writer.write(head);
 			writer.write("<body>\n");
 			for (Content content : contents) {
-				String movieBlock = String.format(divTemplate, content.title(), content.urlImage(), content.title(),
+				String movieBlock = String.format(divTemplate, content.title(), content.urlImage(), content.title(), content.type(),
 						content.rating(), content.year());
 				writer.write(movieBlock);
 
